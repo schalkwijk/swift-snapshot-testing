@@ -803,7 +803,7 @@ private func add(traits: UITraitCollection, viewController: UIViewController, to
   viewController.view.layoutIfNeeded()
 
   return {
-    rootViewController.beginAppearanceTransition(false, animated: false)
+    rootViewController.beginAppearanceTransition(true, animated: false)
     rootViewController.endAppearanceTransition()
     window.rootViewController = nil
   }
