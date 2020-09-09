@@ -232,7 +232,11 @@ public func verifySnapshot<Value, Format>(
       guard var diffable = optionalDiffable else {
         return "Couldn't snapshot value"
       }
-      
+
+      try! fileUrl.absoluteString.write(to: URL(string: "file:///tmp/fileurl")!, atomically: true, encoding: .utf8)
+      try! snapshotDirectoryUrl.absoluteString.write(to: URL(string: "file:///tmp/snapshotDirectoryUrl")!, atomically: true, encoding: .utf8)
+      try! snapshotFileUrl.absoluteString.write(to: URL(string: "file:///tmp/snapshotFileUrl")!, atomically: true, encoding: .utf8)
+
       guard !recording, fileManager.fileExists(atPath: snapshotFileUrl.path) else {
         try snapshotting.diffing.toData(diffable).write(to: snapshotFileUrl)
         return recording
